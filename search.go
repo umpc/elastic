@@ -487,18 +487,7 @@ type SearchSuggestion struct {
 	Text    string                   `json:"text"`
 	Offset  int                      `json:"offset"`
 	Length  int                      `json:"length"`
-	Options []SearchSuggestionOption `json:"options"`
-}
-
-// SearchSuggestionOption is an option of a SearchSuggestion.
-// See https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-suggesters.html.
-type SearchSuggestionOption struct {
-	Text   string           `json:"text"`
-	Index  string           `json:"_index"`
-	Type   string           `json:"_type"`
-	Id     string           `json:"_id"`
-	Score  float64          `json:"score"`
-	Source *json.RawMessage `json:"_source"`
+	Options []map[string]interface{} `json:"options"`
 }
 
 // SearchProfile is a list of shard profiling data collected during
