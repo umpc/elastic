@@ -80,8 +80,13 @@ func TestTermSuggester(t *testing.T) {
 		t.Errorf("expected 1 option; got %d", len(mySuggestion.Options))
 	}
 	myOption := mySuggestion.Options[0]
-	if myOption.Text != "golang" {
-		t.Errorf("expected Text = 'golang'; got %s", myOption.Text)
+	switch myOption["text"].(type) {
+	case string:
+	default:
+		t.Errorf(`expected myOption["text"] type = string`)
+	}
+	if myOption["text"].(string) != "golang" {
+		t.Errorf(`expected myOption["text"] = 'golang'; got %s`, myOption["text"].(string))
 	}
 }
 
@@ -235,7 +240,12 @@ func TestCompletionSuggester(t *testing.T) {
 		t.Errorf("expected 1 option; got %d", len(mySuggestion.Options))
 	}
 	myOption := mySuggestion.Options[0]
-	if myOption.Text != "Golang" {
-		t.Errorf("expected Text = 'Golang'; got %s", myOption.Text)
+	switch myOption["text"].(type) {
+	case string:
+	default:
+		t.Errorf(`expected myOption["text"] type = string`)
+	}
+	if myOption["text"].(string) != "Golang" {
+		t.Errorf(`expected myOption["text"] = 'Golang'; got %s`, myOption["text"].(string))
 	}
 }
