@@ -114,8 +114,9 @@ func (q *SuggesterGeoQuery) Source() (interface{}, error) {
 		source[q.name] = x
 
 		if q.location != nil {
-			x["value"] = q.location.Source()
-		}
+                        x["lat"] = q.location.Lat
+                        x["lon"] = q.location.Lon
+                }
 
 		switch len(q.precision) {
 		case 0:
